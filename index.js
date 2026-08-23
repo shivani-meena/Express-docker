@@ -9,6 +9,8 @@ app.get("/", (req, res) => {
     <h1>Hello from Docker + CI/CD 🚀</h1>
     <p>This application is running inside a Docker container.</p>
     <p>Deployed automatically through GitHub Actions and Render.</p>
+
+    <h3>Hello from Node.js! 🚀 CD is working!<h3>
   `);});
 
 app.listen(PORT, "0.0.0.0", () => {
