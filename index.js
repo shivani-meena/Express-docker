@@ -10,8 +10,7 @@ app.get("/", (req, res) => {
     <p>This application is running inside a Docker container.</p>
     <p>Deployed automatically through GitHub Actions and Render.</p>
 
-    <h3>Hello from Node.js! 🚀 CD is working!<h3>
-  `);});
+   <h3>${process.env.APP_MESSAGE || "Hello from Node.js! 🚀 CD is working!"}</h3>`);});
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
