@@ -46,3 +46,6 @@ jobs:
 
       - name: Push Docker image
         run: docker push ghcr.io/shivani-meena/express-docker:latest
+
+      - name: Trigger Render deployment
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
