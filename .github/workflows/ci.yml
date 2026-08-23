@@ -42,10 +42,15 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/shivani-meena/express-docker:latest .
+        run: |
+          docker build \
+            -t ghcr.io/shivani-meena/express-docker:latest \
+            -t ghcr.io/shivani-meena/express-docker:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/shivani-meena/express-docker:latest
+        run: |
+          docker push ghcr.io/shivani-meena/express-docker:latest
+          docker push ghcr.io/shivani-meena/express-docker:${{ github.sha }}
 
       - name: Trigger Render deployment
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
